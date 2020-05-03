@@ -335,8 +335,8 @@ public extension DateInRegion {
 		case .toFloor30Mins:	return dateRoundedAt(.toFloorMins(30))
 
 		case .toMins(let minuteInterval):
-			let onesDigit: Int = (minute % 10)
-			if onesDigit < 5 {
+			let onesDigit: TimeInterval = TimeInterval(minute % minuteInterval)
+			if onesDigit < TimeInterval(minuteInterval) / 2 {
 				return dateRoundedAt(.toFloorMins(minuteInterval))
 			} else {
 				return dateRoundedAt(.toCeilMins(minuteInterval))
