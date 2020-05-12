@@ -342,10 +342,10 @@ public extension DateInRegion {
 				return dateRoundedAt(.toCeilMins(minuteInterval))
 			}
 
-		case .toCeilMins(let minuteInterval):
-			let remain: Int = (minute % minuteInterval)
-			let value = (( Int(1.minutes.timeInterval) * (minuteInterval - remain)) - second)
-			return dateByAdding(value, .second)
+        case .toCeilMins(let minuteInterval):
+            let remain: Int = (minute % minuteInterval)
+            let value: Int = (remain == 0) ? 0 : ((Int(1.minutes.timeInterval) * (minuteInterval - remain)) - second)
+            return dateByAdding(value, .second)
 
 		case .toFloorMins(let minuteInterval):
 			let remain: Int = (minute % minuteInterval)
